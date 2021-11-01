@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>94174188183-j8s6qqgd983j4teld5c5aqd2mh26kbvq.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.94174188183-j8s6qqgd983j4teld5c5aqd2mh26kbvq</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDikMK_V1GzNRlYjkcwFabSM8Eg7VNUMuE</string>
+	<key>GCM_SENDER_ID</key>
+	<string>94174188183</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.iCode.iMove</string>
+	<key>PROJECT_ID</key>
+	<string>imove-user</string>
+	<key>STORAGE_BUCKET</key>
+	<string>imove-user.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:94174188183:ios:d5ed6daca55673caf1cfd2</string>
+	<key>DATABASE_URL</key>
+	<string>https://imove-user-default-rtdb.firebaseio.com</string>
+</dict>
+</plist>

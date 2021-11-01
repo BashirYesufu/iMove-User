@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "94174188183",
+    "project_id": "imove-user",
+    "storage_bucket": "imove-user.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:94174188183:android:a1a853e6b229a795f1cfd2",
+        "android_client_info": {
+          "package_name": "com.iCode.iMove"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "94174188183-hfslegvtqrusrcuku4p3iccv37phr7ck.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDwGyeCe5B3bsXdxvQsYm9oG-Xeyy9Oipk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "94174188183-hfslegvtqrusrcuku4p3iccv37phr7ck.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
