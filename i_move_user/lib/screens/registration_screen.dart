@@ -1,15 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:i_move_user/screens/registration_screen.dart';
+import 'package:i_move_user/screens/login_screen.dart';
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+class RegistrationScreen extends StatelessWidget {
+  const RegistrationScreen({Key? key}) : super(key: key);
 
-  static const String screenID = 'login';
+  static const String screenID = 'register';
 
-  TextField makeTextField({required String label}) {
+  TextField makeTextField({required String label, required TextInputType input}) {
     return TextField(
-      keyboardType: TextInputType.emailAddress,
+      keyboardType: input,
       decoration: InputDecoration(
         labelText: label,
         labelStyle: const TextStyle(
@@ -36,7 +36,7 @@ class LoginScreen extends StatelessWidget {
 
               const SizedBox(height: 35.0,),
               Image.asset(
-                  'images/logo.png',
+                'images/logo.png',
                 width: 390.0,
                 height: 250.0,
                 alignment: Alignment.center,
@@ -44,11 +44,11 @@ class LoginScreen extends StatelessWidget {
 
               const SizedBox(height: 1.0,),
               const Text(
-                'Login as a Rider',
+                'Register as a Rider',
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  fontSize: 24.0,
-                  fontFamily: 'Bolt-SemiBold'
+                    fontSize: 24.0,
+                    fontFamily: 'Bolt-SemiBold'
                 ),
               ),
 
@@ -58,10 +58,16 @@ class LoginScreen extends StatelessWidget {
                   children: [
 
                     const SizedBox(height: 10.0,),
-                    makeTextField(label: 'Email'),
+                    makeTextField(label: 'Full Name', input: TextInputType.text),
 
                     const SizedBox(height: 10.0,),
-                    makeTextField(label: 'Password'),
+                    makeTextField(label: 'Phone Number', input: TextInputType.phone),
+
+                    const SizedBox(height: 10.0,),
+                    makeTextField(label: 'Email', input: TextInputType.emailAddress),
+
+                    const SizedBox(height: 10.0,),
+                    makeTextField(label: 'Password', input: TextInputType.emailAddress),
 
                     const SizedBox(height: 40.0,),
                     ElevatedButton(
@@ -70,9 +76,9 @@ class LoginScreen extends StatelessWidget {
                         height: 50.0,
                         child: const Center(
                           child: Text(
-                            'Login',
+                            'Create Account',
                             style: TextStyle(
-                                color: Colors.black,
+                              color: Colors.black,
                               fontSize: 18.0,
                               fontFamily: 'Bolt-SemiBold',
                             ),
@@ -92,10 +98,10 @@ class LoginScreen extends StatelessWidget {
 
               TextButton(
                 onPressed: () {
-                  Navigator.pushNamedAndRemoveUntil(context, RegistrationScreen.screenID, (route) => false);
+                  Navigator.pushNamedAndRemoveUntil(context, LoginScreen.screenID, (route) => false);
                 },
                 child: const Text(
-                  'Do not have an account? Register here.',
+                  'Already have an account? Login here.',
                   style: TextStyle(
                     color: Colors.black,
                   ),
