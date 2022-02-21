@@ -3,12 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:i_move_user/screens/login_screen.dart';
 
 class RegistrationScreen extends StatelessWidget {
-  const RegistrationScreen({Key? key}) : super(key: key);
+  RegistrationScreen({Key? key}) : super(key: key);
 
   static const String screenID = 'register';
 
-  TextField makeTextField({required String label, required TextInputType input}) {
+  TextEditingController nameTextEditingController = TextEditingController();
+  TextEditingController emailTextEditingController = TextEditingController();
+  TextEditingController passwordTextEditingController = TextEditingController();
+  TextEditingController phoneTextEditingController = TextEditingController();
+
+  TextField makeTextField({required String label, required TextInputType input, required TextEditingController controller}) {
     return TextField(
+      controller: controller,
       keyboardType: input,
       decoration: InputDecoration(
         labelText: label,
@@ -58,16 +64,32 @@ class RegistrationScreen extends StatelessWidget {
                   children: [
 
                     SizedBox(height: 10.0,),
-                    makeTextField(label: 'Full Name', input: TextInputType.text),
+                    makeTextField(
+                        label: 'Full Name',
+                        input: TextInputType.text,
+                        controller: nameTextEditingController
+                    ),
 
                     SizedBox(height: 10.0,),
-                    makeTextField(label: 'Phone Number', input: TextInputType.phone),
+                    makeTextField(
+                        label: 'Phone Number',
+                        input: TextInputType.phone,
+                        controller: phoneTextEditingController
+                    ),
 
                     SizedBox(height: 10.0,),
-                    makeTextField(label: 'Email', input: TextInputType.emailAddress),
+                    makeTextField(
+                        label: 'Email',
+                        input: TextInputType.emailAddress,
+                        controller: emailTextEditingController
+                    ),
 
                     SizedBox(height: 10.0,),
-                    makeTextField(label: 'Password', input: TextInputType.emailAddress),
+                    makeTextField(
+                        label: 'Password',
+                        input: TextInputType.emailAddress,
+                        controller: passwordTextEditingController
+                    ),
 
                     SizedBox(height: 40.0,),
                     ElevatedButton(
