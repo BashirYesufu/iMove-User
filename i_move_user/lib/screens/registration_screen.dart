@@ -1,6 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:i_move_user/main.dart';
 import 'package:i_move_user/screens/login_screen.dart';
+import 'package:i_move_user/screens/main_screen.dart';
 
 class RegistrationScreen extends StatelessWidget {
   RegistrationScreen({Key? key}) : super(key: key);
@@ -93,7 +97,20 @@ class RegistrationScreen extends StatelessWidget {
 
                     SizedBox(height: 40.0,),
                     ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        if (nameTextEditingController.text.length < 2) {
+                          displayToastMessage("Name must have at least two characters", context);
+                        } else if (!emailTextEditingController.text.contains("@")) {
+                          displayToastMessage("Email provided is not a valid email", context);
+                        } else if (phoneTextEditingController.text.isEmpty) {
+                          displayToastMessage("Please enter a valid phone number", context);
+                        } else if (passwordTextEditingController.text.length < 6) {
+                          displayToastMessage("Password must be at least six characters.", context);
+                        } else {
+                          registerNewUser(context);
+                          Navigator.pushNamedAndRemoveUntil(context, MainScreen.screenID, (route) => false);
+                        }
+                      },
                       child: Container(
                         height: 50.0,
                         child: Center(
@@ -135,4 +152,35 @@ class RegistrationScreen extends StatelessWidget {
       ),
     );
   }
+
+  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+  void registerNewUser(BuildContext context) async {
+    final User? _user = (await _firebaseAuth.createUserWithEmailAndPassword(
+        email: emailTextEditingController.text,
+        password: passwordTextEditingController.text).catchError((errorMessage) {
+          displayToastMessage("Error: " + errorMessage, context);
+    })).user;
+
+    if (_user != null) {
+      // save user info
+      
+      Map userDataMap = {
+        "name": nameTextEditingController.text.trim(),
+        "email": emailTextEditingController.text.trim(),
+        "phone": phoneTextEditingController.text.trim(),
+      };
+
+      userReference.child(_user.uid).set(userDataMap);
+      displayToastMessage("User Account created successfully.", context);
+    } else {
+      displayToastMessage("New user was not created successfully.", context);
+    }
+  }
+
+
+
+}
+
+displayToastMessage(String message, BuildContext context) {
+  Fluttertoast.showToast(msg: message);
 }
