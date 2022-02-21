@@ -12,15 +12,15 @@ class RegistrationScreen extends StatelessWidget {
       keyboardType: input,
       decoration: InputDecoration(
         labelText: label,
-        labelStyle: const TextStyle(
+        labelStyle: TextStyle(
           fontSize: 14.0,
         ),
-        hintStyle: const TextStyle(
+        hintStyle: TextStyle(
           color: Colors.grey,
           fontSize: 10.0,
         ),
       ),
-      style: const TextStyle(fontSize: 14.0),
+      style: TextStyle(fontSize: 14.0),
     );
   }
 
@@ -30,11 +30,11 @@ class RegistrationScreen extends StatelessWidget {
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: EdgeInsets.all(8.0),
           child: Column(
             children: [
 
-              const SizedBox(height: 35.0,),
+              SizedBox(height: 35.0,),
               Image.asset(
                 'images/logo.png',
                 width: 390.0,
@@ -42,8 +42,8 @@ class RegistrationScreen extends StatelessWidget {
                 alignment: Alignment.center,
               ),
 
-              const SizedBox(height: 1.0,),
-              const Text(
+              SizedBox(height: 1.0,),
+              Text(
                 'Register as a Rider',
                 textAlign: TextAlign.center,
                 style: TextStyle(
@@ -57,24 +57,24 @@ class RegistrationScreen extends StatelessWidget {
                 child: Column(
                   children: [
 
-                    const SizedBox(height: 10.0,),
+                    SizedBox(height: 10.0,),
                     makeTextField(label: 'Full Name', input: TextInputType.text),
 
-                    const SizedBox(height: 10.0,),
+                    SizedBox(height: 10.0,),
                     makeTextField(label: 'Phone Number', input: TextInputType.phone),
 
-                    const SizedBox(height: 10.0,),
+                    SizedBox(height: 10.0,),
                     makeTextField(label: 'Email', input: TextInputType.emailAddress),
 
-                    const SizedBox(height: 10.0,),
+                    SizedBox(height: 10.0,),
                     makeTextField(label: 'Password', input: TextInputType.emailAddress),
 
-                    const SizedBox(height: 40.0,),
+                    SizedBox(height: 40.0,),
                     ElevatedButton(
                       onPressed: () {},
                       child: Container(
                         height: 50.0,
-                        child: const Center(
+                        child: Center(
                           child: Text(
                             'Create Account',
                             style: TextStyle(
@@ -100,7 +100,7 @@ class RegistrationScreen extends StatelessWidget {
                 onPressed: () {
                   Navigator.pushNamedAndRemoveUntil(context, LoginScreen.screenID, (route) => false);
                 },
-                child: const Text(
+                child: Text(
                   'Already have an account? Login here.',
                   style: TextStyle(
                     color: Colors.black,

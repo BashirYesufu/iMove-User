@@ -3,9 +3,8 @@ import 'package:i_move_user/screens/login_screen.dart';
 import 'package:i_move_user/screens/main_screen.dart';
 import 'package:i_move_user/screens/registration_screen.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+void main() => runApp(MyApp());
+
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
