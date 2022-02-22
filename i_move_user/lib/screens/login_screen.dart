@@ -3,11 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:i_move_user/screens/registration_screen.dart';
 
 class LoginScreen extends StatelessWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+  LoginScreen({Key? key}) : super(key: key);
 
   static const String screenID = 'login';
 
-  TextField makeTextField({required String label}) {
+  TextEditingController emailTextEditingController = TextEditingController();
+  TextEditingController passwordTextEditingController = TextEditingController();
+
+  TextField makeTextField({required String label, required TextEditingController controller}) {
     return TextField(
       keyboardType: TextInputType.emailAddress,
       decoration: InputDecoration(
@@ -58,14 +61,17 @@ class LoginScreen extends StatelessWidget {
                   children: [
 
                     SizedBox(height: 10.0,),
-                    makeTextField(label: 'Email'),
+                    makeTextField(label: 'Email', controller: emailTextEditingController),
 
                     SizedBox(height: 10.0,),
-                    makeTextField(label: 'Password'),
+                    makeTextField(label: 'Password', controller: passwordTextEditingController),
 
                     SizedBox(height: 40.0,),
                     ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        // Login User
+                        
+                      },
                       child: Container(
                         height: 50.0,
                         child: Center(
