@@ -70,7 +70,7 @@ class LoginScreen extends StatelessWidget {
                     ElevatedButton(
                       onPressed: () {
                         // Login User
-                        
+
                       },
                       child: Container(
                         height: 50.0,
