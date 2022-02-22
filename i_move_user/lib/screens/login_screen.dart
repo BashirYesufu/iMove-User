@@ -1,6 +1,11 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:i_move_user/screens/main_screen.dart';
 import 'package:i_move_user/screens/registration_screen.dart';
+
+import '../main.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({Key? key}) : super(key: key);
@@ -70,7 +75,11 @@ class LoginScreen extends StatelessWidget {
                     ElevatedButton(
                       onPressed: () {
                         // Login User
-
+                        if (!emailTextEditingController.text.contains("@") || passwordTextEditingController.text.length < 6) {
+                          displayToastMessage("Email or password invalid", context);
+                        } else {
+                          loginUser(context);
+                        }
                       },
                       child: Container(
                         height: 50.0,
@@ -112,5 +121,29 @@ class LoginScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+  void loginUser(BuildContext context) async {
+    final User? _user = (await _firebaseAuth.signInWithEmailAndPassword(
+        email: emailTextEditingController.text,
+        password: passwordTextEditingController.text).catchError((errorMessage) {
+      displayToastMessage("Error: " + errorMessage, context);
+    })).user;
+
+    if (_user != null) {
+      userReference.child(_user.uid).once().then((DataSnapshot snap) {
+        if (snap.value != null) {
+          Navigator.pushNamedAndRemoveUntil(context, MainScreen.screenID, (route) => false);
+          displayToastMessage("User Logged in successfully.", context);
+        } else {
+          _firebaseAuth.signOut();
+          displayToastMessage("User does not exist. Create an account.", context);
+        }
+      });
+
+    } else {
+      displayToastMessage("Error signing in user.", context);
+    }
   }
 }
