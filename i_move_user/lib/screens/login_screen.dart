@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:i_move_user/all_widgets/progress_dialog.dart';
 import 'package:i_move_user/screens/main_screen.dart';
 import 'package:i_move_user/screens/registration_screen.dart';
 
@@ -75,11 +76,9 @@ class LoginScreen extends StatelessWidget {
                     ElevatedButton(
                       onPressed: () {
                         // Login User
-                        if (!emailTextEditingController.text.contains("@") || passwordTextEditingController.text.length < 6) {
-                          displayToastMessage("Email or password invalid", context);
-                        } else {
+
                           loginUser(context);
-                        }
+
                       },
                       child: Container(
                         height: 50.0,
@@ -125,6 +124,15 @@ class LoginScreen extends StatelessWidget {
 
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   void loginUser(BuildContext context) async {
+
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return ProgressDialog(message: "Authenticating, Please wait....",);
+      }
+    );
+
     final User? _user = (await _firebaseAuth.signInWithEmailAndPassword(
         email: emailTextEditingController.text,
         password: passwordTextEditingController.text).catchError((errorMessage) {
