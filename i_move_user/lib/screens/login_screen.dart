@@ -136,7 +136,8 @@ class LoginScreen extends StatelessWidget {
     final User? _user = (await _firebaseAuth.signInWithEmailAndPassword(
         email: emailTextEditingController.text,
         password: passwordTextEditingController.text).catchError((errorMessage) {
-      displayToastMessage("Error: " + errorMessage, context);
+          Navigator.pop(context);
+          displayToastMessage("Error: " + errorMessage, context);
     })).user;
 
     if (_user != null) {
@@ -151,6 +152,7 @@ class LoginScreen extends StatelessWidget {
       });
 
     } else {
+      Navigator.pop(context);
       displayToastMessage("Error signing in user.", context);
     }
   }
